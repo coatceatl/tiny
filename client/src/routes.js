@@ -5,8 +5,8 @@ import { CreatePage } from './pages/CreatePage'
 import { DetailPage } from './pages/DetailPage'
 import { SignPage } from './pages/SignPage'
 
-export const useRoutes = signesIn => {
-  if (signesIn) {
+export const useRoutes = signedIn => {
+  if (signedIn) {
     return (
       <Switch>
         <Route path='/links' exact>

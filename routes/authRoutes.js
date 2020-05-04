@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator')
 const User = require('../models/User')
 const router = Router()
 
-// /api/sign_up
+// /api/users
 router.post(
   '/sign_up',
   [
