@@ -2,12 +2,21 @@ import React, { useState } from 'react'
 import { Button, TextField, Grid, Typography, Container } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export const SignPage = () => {
   const [form, setForm] = useState({
     email: '',
     password: ''
   })
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState(false)
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -16,8 +25,20 @@ export const SignPage = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await axios.post('/api/users/', { ...form })
-    console.log(res.data)
+    try {
+      const res = await axios.post('/api/users/', { ...form })
+      console.log(res.data)
+      console.log(res.data.message)
+      setMessage(res.data.message)
+      setOpen(true)
+      setStatus(true)
+    } catch (e) {
+      console.log(e.response);
+      console.log('Error text: ', e.response.data.message);
+      setMessage(e.response.data.message)
+      setOpen(true)
+      setStatus(false)
+    }
   }
 
   return (
@@ -74,6 +95,19 @@ export const SignPage = () => {
             </Grid>
           </Grid>
         </form>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          open={open}
+          autoHideDuration={4000}
+          onClose={() => setOpen(false)}
+        >
+          <Alert severity={status ? 'success' : 'warning'}>
+            {message}
+          </Alert>
+        </Snackbar>
       </div>
     </Container>
   );
