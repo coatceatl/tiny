@@ -4,6 +4,7 @@ import { LinksPage } from './pages/LinksPage'
 import { CreatePage } from './pages/CreatePage'
 import { DetailPage } from './pages/DetailPage'
 import { SignPage } from './pages/SignPage'
+import { LoginPage } from './pages/LoginPage'
 
 export const useRoutes = signedIn => {
   if (signedIn) {
@@ -29,7 +30,7 @@ export const useRoutes = signedIn => {
         <SignPage />
       </Route>
       <Route path='/login' exact>
-        <SignPage />
+        <LoginPage />
       </Route>
       <Redirect to='/' />
     </Switch>

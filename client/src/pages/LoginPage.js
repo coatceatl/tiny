@@ -10,7 +10,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export const SignPage = () => {
+export const LoginPage = () => {
   const auth = useContext(AuthContext)
   console.log('Auth: ', auth)
   const [form, setForm] = useState({
@@ -29,16 +29,13 @@ export const SignPage = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      const res = await axios.post('/api/users/', { ...form })
-      console.log(res.data)
-      setMessage(res.data.message)
-      setOpen(true)
-      setStatus(true)
+      const res = await axios.post('/api/users/login', { ...form })
+      auth.login(res.data.token, res.data.userId)
     } catch (e) {
-      console.log('Error: ', e.response);
       setMessage(e.response.data.message)
       setOpen(true)
       setStatus(false)
+      console.log(e.response)
     }
   }
 
@@ -49,7 +46,7 @@ export const SignPage = () => {
           <img src="img/logo.svg" alt="Tiny" />
         </div>
         <Typography component="h1" variant="h5">
-          Sign up and start shortening
+          Sign in and start sharing
         </Typography>
         <form className="form" onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -86,12 +83,12 @@ export const SignPage = () => {
             color="primary"
             className="btn btn-submit"
           >
-            Sign Up
+            Sign In
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <NavLink to="/login" variant="body2">
-                Already have an account? Sign in
+              <NavLink to="/" variant="body2">
+                Don't have an account? Sign up
               </NavLink>
             </Grid>
           </Grid>
