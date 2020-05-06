@@ -25,19 +25,28 @@ export const SignPage = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    // try {
+    //   const res = await axios.post('/api/users/', { ...form })
+    //   console.log(res.data)
+    //   console.log(res.data.message)
+    //   setMessage(res.data.message)
+    //   setOpen(true)
+    //   setStatus(true)
+    // } catch (e) {
+    //   console.log(e.response);
+    //   console.log('Error text: ', e.response.data.message);
+    //   setMessage(e.response.data.message)
+    //   setOpen(true)
+    //   setStatus(false)
+    // }
     try {
-      const res = await axios.post('/api/users/', { ...form })
+      const res = await axios.post('/api/users/login', { ...form })
       console.log(res.data)
-      console.log(res.data.message)
       setMessage(res.data.message)
       setOpen(true)
       setStatus(true)
     } catch (e) {
-      console.log(e.response);
-      console.log('Error text: ', e.response.data.message);
-      setMessage(e.response.data.message)
-      setOpen(true)
-      setStatus(false)
+      console.log(e.response)
     }
   }
 
@@ -86,6 +95,15 @@ export const SignPage = () => {
             className="btn btn-submit"
           >
             Sign Up
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className="btn btn-submit"
+          >
+            Sign In
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

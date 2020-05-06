@@ -28,6 +28,9 @@ export const useRoutes = signedIn => {
       <Route path='/' exact>
         <SignPage />
       </Route>
+      <Route path='/login' exact>
+        <SignPage />
+      </Route>
       <Redirect to='/' />
     </Switch>
   )
