@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, TextField, Grid, Typography, Container } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { AuthContext } from '../context/AuthContext';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 export const SignPage = () => {
+  const auth = useContext(AuthContext)
+  console.log('Auth: ', auth)
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -41,10 +44,11 @@ export const SignPage = () => {
     // }
     try {
       const res = await axios.post('/api/users/login', { ...form })
+      auth.login(res.data.token, res.data.userId)
       console.log(res.data)
-      setMessage(res.data.message)
-      setOpen(true)
-      setStatus(true)
+      // setMessage(res.data.message)
+      // setOpen(true)
+      // setStatus(true)
     } catch (e) {
       console.log(e.response)
     }
@@ -96,6 +100,7 @@ export const SignPage = () => {
           >
             Sign Up
           </Button>
+
           <Button
             type="submit"
             fullWidth
@@ -105,9 +110,10 @@ export const SignPage = () => {
           >
             Sign In
           </Button>
+
           <Grid container justify="flex-end">
             <Grid item>
-              <NavLink to="sign_in" variant="body2">
+              <NavLink to="/login" variant="body2">
                 Already have an account? Sign in
               </NavLink>
             </Grid>
