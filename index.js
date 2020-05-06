@@ -19,7 +19,7 @@ async function start() {
       console.log(`server started on ${PORT} port`)
     })
   } catch (e) {
-    console.log('server error', e.message)
+    console.log('Server error', e.message)
     process.exit(1)
   }
 }

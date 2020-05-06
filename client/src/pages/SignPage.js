@@ -16,11 +16,8 @@ export const SignPage = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const data = {
-      email: form.email,
-      password: form.password
-    }
-    await axios.post('url', data)
+    const res = await axios.post('/api/users/', { ...form })
+    console.log(res.data)
   }
 
   return (

@@ -6,7 +6,7 @@ const router = Router()
 
 // /api/users
 router.post(
-  '/sign_up',
+  '/',
   [
     check('email', 'Invalid email').isEmail(),
     check('password', 'Password must be at least 6 chars long').isLength({ min: 6 })
