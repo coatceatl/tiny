@@ -52,6 +52,23 @@ main {
     button {
       height: 100%;
     }
+    .root {
+      min-width: 275px;
+      h1 {
+        margin-bottom: 20px;
+      }
+      .pos {
+        margin-bottom: 15px;
+      }
+      a {
+        margin-left: 10px;
+        color: #3f51b5;
+      }
+      span {
+        margin-left: 10px;
+        color: #3f51b5;
+      }
+    }
   }
 }
 .center {
