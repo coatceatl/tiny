@@ -26,13 +26,13 @@ export const useRoutes = signedIn => {
 
   return (
     <Switch>
-      <Route path='/' exact>
-        <SignPage />
-      </Route>
       <Route path='/login' exact>
         <LoginPage />
       </Route>
-      <Redirect to='/' />
+      <Route path='/' exact>
+        <SignPage />
+      </Route>
+      <Redirect to='/login' />
     </Switch>
   )
 }

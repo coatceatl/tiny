@@ -1,18 +1,14 @@
-import React, { useState, useContext } from 'react'
-import { Button, TextField, Grid, Typography, Container } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Button, TextField, Grid, Typography, Container, Snackbar } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import { AuthContext } from '../context/AuthContext';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 export const SignPage = () => {
-  const auth = useContext(AuthContext)
-  console.log('Auth: ', auth)
   const [form, setForm] = useState({
     email: '',
     password: ''

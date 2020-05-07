@@ -12,7 +12,6 @@ function Alert(props) {
 
 export const LoginPage = () => {
   const auth = useContext(AuthContext)
-  console.log('Auth: ', auth)
   const [form, setForm] = useState({
     email: '',
     password: ''

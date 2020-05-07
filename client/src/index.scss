@@ -29,3 +29,23 @@ code {
     margin: 25px 0 15px;
   }
 }
+//navbar
+.header {
+  .toolbar {
+    justify-content: space-between;
+  }
+  .navList {
+    display: flex;
+    a {
+      display: block;
+      line-height: 1.5;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  }
+}
+//main
+main {
+  margin-top: 100px;
+}
