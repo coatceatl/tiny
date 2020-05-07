@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, TextField, Grid, Typography, Container, Snackbar } from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -9,6 +9,7 @@ function Alert(props) {
 }
 
 export const SignPage = () => {
+  const history = useHistory()
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -30,6 +31,7 @@ export const SignPage = () => {
       setMessage(res.data.message)
       setOpen(true)
       setStatus(true)
+      history.push('/login')
     } catch (e) {
       console.log('Error: ', e.response);
       setMessage(e.response.data.message)
