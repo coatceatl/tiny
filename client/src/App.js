@@ -5,11 +5,16 @@ import { useAuth } from './hooks/authHook'
 import { AuthContext } from './context/AuthContext'
 import { CssBaseline } from '@material-ui/core'
 import { Navbar } from './components/Navbar';
+import { Loader } from './components/Loader';
 
 function App() {
-  const { token, login, logout, userId } = useAuth()
+  const { token, login, logout, userId, ready } = useAuth()
   const signedIn = !!token
   const routes = useRoutes(signedIn)
+
+  if (!ready) {
+    return <Loader />
+  }
   return (
     <AuthContext.Provider value={{
       token, login, logout, userId, signedIn
