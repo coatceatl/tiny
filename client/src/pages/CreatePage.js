@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import { useHistory } from 'react-router-dom'
 import { Container, Grid, TextField, Button } from '@material-ui/core'
 import axios from 'axios'
 
 export const CreatePage = () => {
+  const history = useHistory()
   const auth = useContext(AuthContext)
   const [link, setLink] = useState('')
 
@@ -17,8 +19,9 @@ export const CreatePage = () => {
             headers: {
               Authorization: `Bearer ${auth.token}`
             }
-          })
-        console.log(res.data)
+          }
+        )
+        history.push(`/detail/${res.data.link._id}`)
       } catch (e) { }
     }
   }
