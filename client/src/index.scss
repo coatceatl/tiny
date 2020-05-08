@@ -63,10 +63,38 @@ main {
       a {
         margin-left: 10px;
         color: #3f51b5;
+        &:hover {
+          text-decoration: none;
+        }
       }
       span {
         margin-left: 10px;
         color: #3f51b5;
+      }
+    }
+  }
+  .empty {
+    display: flex;
+    justify-content: center;
+  }
+  .table {
+    .header {
+      background-color: #6573c3;
+      th {
+        color: #fff;
+      }
+    }
+    .body {
+      tr {
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.04);
+        }
+        a {
+          color: #3f51b5;
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
     }
   }
