@@ -25,6 +25,20 @@ export const CreatePage = () => {
       } catch (e) { }
     }
   }
+  const handleClick = async e => {
+    try {
+      const res = await axios.post(
+        '/api/links/generate',
+        { from: link },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`
+          }
+        }
+      )
+      history.push(`/detail/${res.data.link._id}`)
+    } catch (e) { }
+  }
   return (
     <Container component="section" maxWidth="md" className="container">
       <Grid container spacing={2}>
@@ -47,6 +61,7 @@ export const CreatePage = () => {
             variant="contained"
             color="primary"
             className="btn btn-submit"
+            onClick={handleClick}
           >
             Shorten
           </Button>

@@ -23,7 +23,6 @@ export const DetailPage = () => {
   useEffect(() => {
     getLink()
   })
-  console.log('Link: ', link)
 
   return (
     <>

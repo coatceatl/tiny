@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Card, CardContent, Typography } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Container, Card, CardContent, Typography, Link } from '@material-ui/core'
 
 export const LinkCard = ({ link }) => {
   return (
@@ -11,12 +10,12 @@ export const LinkCard = ({ link }) => {
             Current Link
           </Typography>
           <Typography className='pos' color="textSecondary">
-            Your link:
-              <Link href={link.to} target='_blank' rel="noopener noreferrer" variant="body2">{link.to}</Link>
+            Shorted link:
+              <Link href={link.to} target='_blank'>{link.to}</Link>
           </Typography>
           <Typography className='pos' color="textSecondary">
-            From:
-          <Link href={link.from} target='_blank' rel="noopener noreferrer">{link.from}</Link>
+            Original link:
+          <Link href={link.from} target='_blank'>{link.from}</Link>
           </Typography>
           <Typography className='pos' color="textSecondary">
             Count:
